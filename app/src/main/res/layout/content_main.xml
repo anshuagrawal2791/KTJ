@@ -12,8 +12,12 @@
     tools:context="com.example.anshu.ktj.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        android:text="SignUp"
+        android:id="@+id/Bsignup"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="62dp" />
 </RelativeLayout>
