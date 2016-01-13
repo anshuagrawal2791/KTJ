@@ -29,7 +29,7 @@ public class Signup extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        /*sub=(Button)findViewById(R.id.submit);
+        sub=(Button)findViewById(R.id.submit);
         can=(Button)findViewById(R.id.cancel);
 
         sub.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +45,7 @@ public class Signup extends AppCompatActivity {
                 emailid = email.getText().toString();
                 phoneno = phone.getText().toString();
 
-                if (username.equals("") || password.equals("")) {
+                if (email.equals("")) {
                     Toast.makeText(getApplicationContext(),
                             "Please complete the sign up form",
                             Toast.LENGTH_LONG).show();
@@ -53,8 +53,8 @@ public class Signup extends AppCompatActivity {
                 } else {
                     // Save new user data into Parse.com Data Storage
                     ParseUser user = new ParseUser();
-                    user.setUsername(username);
-                    user.setPassword(password);
+                  //  user.setUsername(username);
+                  //  user.setPassword(password);
                     user.signUpInBackground(new SignUpCallback() {
                         public void done(ParseException e) {
                             if (e == null) {
@@ -73,7 +73,7 @@ public class Signup extends AppCompatActivity {
                     });
                 }
             }
-            });*/
+            });
 
             FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
             fab.setOnClickListener(new View.OnClickListener()
@@ -93,6 +93,8 @@ public class Signup extends AppCompatActivity {
             .
 
             setDisplayHomeAsUpEnabled(true);
+
+
         }
 
     }
