@@ -5,6 +5,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,7 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 public class Signup extends AppCompatActivity {
-    Button sub, can;
+    Button sub;
     EditText user, pass, email, phone;
     String username, password, emailid, phoneno;
 
@@ -29,8 +30,11 @@ public class Signup extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+
         sub=(Button)findViewById(R.id.submit);
-        can=(Button)findViewById(R.id.cancel);
 
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,16 +49,19 @@ public class Signup extends AppCompatActivity {
                 emailid = email.getText().toString();
                 phoneno = phone.getText().toString();
 
-                if (email.equals("")) {
-                    Toast.makeText(getApplicationContext(),
-                            "Please complete the sign up form",
-                            Toast.LENGTH_LONG).show();
-
+                if(username.equals("")){
+                user.setError("This Field is required");
+                }if(emailid.equals("")){
+                    email.setError("This Field is required");
+                }if(password.equals("")){
+                    pass.setError("This Field is required");
+                }if(phoneno.equals("")){
+                    phone.setError("This Field is required");
                 } else {
                     // Save new user data into Parse.com Data Storage
                     ParseUser user = new ParseUser();
-                  //  user.setUsername(username);
-                  //  user.setPassword(password);
+                    //  user.setUsername(username);
+                    //  user.setPassword(password);
                     user.signUpInBackground(new SignUpCallback() {
                         public void done(ParseException e) {
                             if (e == null) {
@@ -73,28 +80,25 @@ public class Signup extends AppCompatActivity {
                     });
                 }
             }
-            });
+        });
 
-            FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-            fab.setOnClickListener(new View.OnClickListener()
-
-            {
-                @Override
-                public void onClick (View view){
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-            }
-
-            );
-
-            getSupportActionBar()
-
-            .
-
-            setDisplayHomeAsUpEnabled(true);
 
 
         }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (item.getItemId()==android.R.id.home){
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+}
