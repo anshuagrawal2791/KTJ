@@ -109,7 +109,11 @@ public class LoginActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(),"Enter password displayed in notifications",Toast.LENGTH_LONG).show();
                 else if(passwordtf.getText().toString().equals(n+""))
                 {
-                    startActivity(new Intent(getApplicationContext(),Home.class));
+                    Intent launchNextActivity=new Intent(getApplicationContext(),Home.class);
+                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    startActivity(launchNextActivity);
                 }
                 else
                 {
