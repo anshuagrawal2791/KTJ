@@ -1,15 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.anshu.ktj.Wallet"
-    android:background="#ffffff">
+   >
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Wallet"
-        android:gravity="center_horizontal" />
+  <android.support.v4.app.FragmentTabHost
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:id="@+id/tabhost">
 
-</FrameLayout>
+  </android.support.v4.app.FragmentTabHost>
+</LinearLayout>
