@@ -25,9 +25,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Signup"
             android:label="@string/title_activity_signup"
@@ -52,13 +50,37 @@
         <activity
             android:name=".Splash"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"
-            >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".kyc_form"
+            android:label="@string/title_activity_kyc_form"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Home_Activity"
+            android:label="@string/title_activity_home_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Wallet_Activity"
+            android:label="@string/title_activity_wallet_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trade_Activity"
+            android:label="@string/title_activity_trade_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LiveMarket_Activity"
+            android:label="@string/title_activity_live_market_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Trans_Activity"
+            android:label="@string/title_activity_trans_"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

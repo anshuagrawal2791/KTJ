@@ -3,11 +3,16 @@ package com.example.anshu.ktj;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.FragmentManager;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.media.MediaPlayer;
+
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -17,13 +22,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.MediaController;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import junit.framework.Test;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private VideoView myVideoView;
+    private int position = 0;
+    private ProgressDialog progressDialog;
+    private MediaController mediaControls;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +51,54 @@ public class Home extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        //set the media controller buttons
+        if (mediaControls == null) {
+            mediaControls = new MediaController(this);
+        }
+
+        //initialize the VideoView
+        myVideoView = (VideoView) findViewById(R.id.videoView);
+
+        // create a progress bar while the video file is loading
+    final  ProgressDialog progressDialog = new ProgressDialog(Home.this);
+        // set a title for the progress bar
+        progressDialog.setTitle("JavaCodeGeeks Android Video View Example");
+        // set a message for the progress bar
+        progressDialog.setMessage("Loading...");
+        //set the progress bar not cancelable on users' touch
+        progressDialog.setCancelable(false);
+        // show the progress bar
+        progressDialog.show();
+
+        try {
+            //set the media controller in the VideoView
+            myVideoView.setMediaController(mediaControls);
+
+            //set the uri of the video to be played
+            myVideoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video));
+
+        } catch (Exception e) {
+            Log.e("Error", e.getMessage());
+            e.printStackTrace();
+        }
+
+        myVideoView.requestFocus();
+        //we also set an setOnPreparedListener in order to know when the video file is ready for playback
+        myVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                // close the progress bar and play the video
+                progressDialog.dismiss();
+                //if we have a position on savedInstanceState, the video playback should start from here
+                myVideoView.seekTo(position);
+                if (position == 0) {
+                   // myVideoView.start();
+                } else {
+                    //if we come from a resumed activity, video playback will be paused
+                    myVideoView.pause();
+                }
+            }
+        });
     }
 
 

@@ -24,4 +24,10 @@
         completions."
     </string>
     <string name="title_activity_splash">Splash</string>
+    <string name="title_activity_kyc_form">kyc_form</string>
+    <string name="title_activity_home_">Home_Activity</string>
+    <string name="title_activity_wallet_">Wallet_Activity</string>
+    <string name="title_activity_trade_">Trade_Activity</string>
+    <string name="title_activity_live_market_">LiveMarket_Activity</string>
+    <string name="title_activity_trans_">Trans_Activity</string>
 </resources>
