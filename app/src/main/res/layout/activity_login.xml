@@ -61,6 +61,10 @@
                 android:text="Generate Password"
                 android:textStyle="bold" />
 
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/password"
                 android:layout_width="match_parent"
@@ -72,7 +76,7 @@
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:singleLine="true" />
-
+            </android.support.design.widget.TextInputLayout>
             <Button
                 style="?android:textAppearanceSmall"
                 android:id="@+id/login"

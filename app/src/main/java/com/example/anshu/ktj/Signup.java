@@ -62,7 +62,7 @@ public class Signup extends AppCompatActivity {
                 } else {
                     // Save new user data into Parse.com Data Storage
                     ParseUser user = new ParseUser();
-                      user.setUsername(username);
+                      user.setUsername(emailid);
                       user.setPassword("password");
                     user.put("city", city.getText().toString());
 
