@@ -68,6 +68,7 @@ public class Signup extends AppCompatActivity {
 
                     user.put("phone", phoneno);
                     user.setEmail(emailid);
+                    user.put("name",username);
                     final ProgressDialog dialog= new ProgressDialog(Signup.this);
                     dialog.setIndeterminate(true);
                     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
