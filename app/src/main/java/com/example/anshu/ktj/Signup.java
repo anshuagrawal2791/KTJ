@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.parse.Parse;
 import com.parse.ParseClassName;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -28,6 +29,7 @@ public class Signup extends AppCompatActivity {
         setContentView(R.layout.signup2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
 
         sub=(Button)findViewById(R.id.submit);
         can=(Button)findViewById(R.id.cancel);
