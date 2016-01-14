@@ -90,10 +90,14 @@ public class LoginActivity extends AppCompatActivity {
                     Random rand = new Random();
                     n= (100000 + rand.nextInt(900000));
                     mBuilder.setContentText(""+n);
-
+                    Toast.makeText(getApplicationContext(),"Check your notifications for password",Toast.LENGTH_LONG).show();
                     NotificationManager mNotificationManager = (NotificationManager) getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
 
                     mNotificationManager.notify(0, mBuilder.build());
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(),"Wrong Email",Toast.LENGTH_LONG).show();
                 }
             }
         });
