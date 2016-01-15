@@ -67,37 +67,32 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-       // setupActionBar();
+        // setupActionBar();
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
-       // populateAutoComplete();
-        genpwd=(Button)findViewById(R.id.generatepassword);
-        login=(Button)findViewById(R.id.login);
-        passwordtf=(TextView)findViewById(R.id.password);
+        // populateAutoComplete();
+        genpwd = (Button) findViewById(R.id.generatepassword);
+        login = (Button) findViewById(R.id.login);
+        passwordtf = (TextView) findViewById(R.id.password);
 
         final ParseUser user = ParseUser.getCurrentUser();
         genpwd.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mEmailView.getText().toString().equals(""))
-                    Toast.makeText(getApplicationContext(),"Enter email id",Toast.LENGTH_LONG).show();
-                else if(mEmailView.getText().toString().equals(user.getUsername().toString()))
-
+                if (mEmailView.getText().toString().equals(""))
+                    Toast.makeText(getApplicationContext(), "Enter email id", Toast.LENGTH_LONG).show();
+                else
                 {
                     NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(getApplicationContext());
                     mBuilder.setSmallIcon(R.drawable.splash2);
                     mBuilder.setContentTitle("Your Login Password is:");
                     Random rand = new Random();
-                    n= (100000 + rand.nextInt(900000));
-                    mBuilder.setContentText(""+n);
-                    Toast.makeText(getApplicationContext(),"Check your notifications for password",Toast.LENGTH_LONG).show();
+                    n = (100000 + rand.nextInt(900000));
+                    mBuilder.setContentText("" + n);
+                    Toast.makeText(getApplicationContext(), "Check your notifications for password", Toast.LENGTH_LONG).show();
                     NotificationManager mNotificationManager = (NotificationManager) getSystemService(getApplicationContext().NOTIFICATION_SERVICE);
 
                     mNotificationManager.notify(0, mBuilder.build());
-                }
-                else
-                {
-                    Toast.makeText(getApplicationContext(),"Wrong Email",Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -105,25 +100,61 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(passwordtf.getText().toString().equals(""))
-                    Toast.makeText(getApplicationContext(),"Enter password displayed in notifications",Toast.LENGTH_LONG).show();
-                else if(passwordtf.getText().toString().equals(n+""))
-                {
-                    Intent launchNextActivity=new Intent(getApplicationContext(),Home_Activity.class);
-                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                    startActivity(launchNextActivity);
+                if (passwordtf.getText().toString().equals(""))
+                    Toast.makeText(getApplicationContext(), "Enter password displayed in notifications", Toast.LENGTH_LONG).show();
+                else if (passwordtf.getText().toString().equals(n + "")) {
+                    ParseQuery<ParseUser> query = ParseUser.getQuery();
+                    query.whereEqualTo("email", mEmailView.getText().toString());
+                    final ProgressDialog dialog = new ProgressDialog(LoginActivity.this);
+                    dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+                    dialog.setMessage("Logging In...");
+                    dialog.setIndeterminate(true);
+                    dialog.setCanceledOnTouchOutside(false);
+                    dialog.show();
+                    query.findInBackground(new FindCallback<ParseUser>() {
+                        @Override
+                        public void done(List<ParseUser> objects, ParseException e) {
+                            if (!objects.isEmpty()) {
+
+                                ParseUser.logInInBackground(mEmailView.getText().toString(), "password",
+                                        new LogInCallback() {
+                                            public void done(ParseUser user, ParseException e) {
+                                                dialog.dismiss();
+                                                if (user != null) {
+                                                    // If user exist and authenticated, send user to Welcome.class
+                                                    Intent launchNextActivity = new Intent(getApplicationContext(), Home_Activity.class);
+                                                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                                    launchNextActivity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                                                    startActivity(launchNextActivity);
+                                                    Toast.makeText(getApplicationContext(),
+                                                            "Successfully Logged in",
+                                                            Toast.LENGTH_LONG).show();
+                                                    //dialog.dismiss();
+                                                    //finish();
+                                                } else {
+                                                    Toast.makeText(
+                                                            getApplicationContext(),
+                                                            "Wrong Password!!",
+                                                            Toast.LENGTH_LONG).show();
+                                                    //dialog.dismiss();
+                                                }
+                                            }
+                                        });
+                            } else {
+                                Toast.makeText(
+                                        getApplicationContext(),
+                                        "No such user exist, please signup",
+                                        Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
+                            }
+                        }
+                    });
                 }
-                else
-                {
-                    passwordtf.setError("Wrong Password");
-                }
+
+
             }
         });
-
-        mPasswordView = (EditText) findViewById(R.id.password);
-
 
 
     }

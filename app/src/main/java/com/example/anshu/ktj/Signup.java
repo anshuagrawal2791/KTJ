@@ -39,13 +39,13 @@ public class Signup extends AppCompatActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
         sub=(Button)findViewById(R.id.submit);
-       // alreadyregistered=(TextView)findViewById(R.id.alreadyregisterd);
-//        alreadyregistered.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(Signup.this,LoginActivity.class));
-//            }
-//        });
+        alreadyregistered=(TextView)findViewById(R.id.alreadyamember);
+        alreadyregistered.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Signup.this,LoginActivity.class));
+            }
+        });
 
         sub.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -10,14 +10,16 @@ import com.parse.Parse;
  */
 public class myapp extends Application {
 
+
     private static myapp sInstance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+        Parse.initialize(this);
         sInstance=this;
         Parse.enableLocalDatastore(this);
-        Parse.initialize(this);
+       // Parse.initialize(this);
 
 
     }

@@ -86,6 +86,17 @@
             android:id="@+id/submit"
             android:layout_gravity="center_horizontal" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Already a Member?"
+            android:id="@+id/alreadyamember"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/colorAccent"
+            />
+
     </LinearLayout>
 
 </RelativeLayout>
