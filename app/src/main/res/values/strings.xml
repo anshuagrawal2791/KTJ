@@ -30,4 +30,5 @@
     <string name="title_activity_trade_">Trade_Activity</string>
     <string name="title_activity_live_market_">LiveMarket_Activity</string>
     <string name="title_activity_trans_">Trans_Activity</string>
+    <string name="title_activity_log_out">LogOut</string>
 </resources>

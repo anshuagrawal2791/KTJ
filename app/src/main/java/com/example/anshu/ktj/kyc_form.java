@@ -62,17 +62,22 @@ public class kyc_form extends AppCompatActivity {
                 if (gender_str.equals("")){
                     gender.setError("This Field is required");
                 }
-                if (dob_str.equals("")){
+               else if (dob_str.equals("")){
                     dob.setError("This Field is required");
-                } if (nationality_str.equals("")){
+                }
+               else if (nationality_str.equals("")){
                     nationality.setError("This Field is required");
-                } if (pan_str.equals("")){
+                }
+               else if (pan_str.equals("")){
                     pan.setError("This Field is required");
-                } if (bankname_str.equals("")){
+                }
+               else if (bankname_str.equals("")){
                      bankname.setError("This Field is required");
-                } if (bankac_str.equals("")){
+                }
+               else if (bankac_str.equals("")){
                     bankac.setError("This Field is required");
-                } if (mobile_str.equals("")){
+                }
+                else if (mobile_str.equals("")){
                     mobile.setError("This Field is required");
                 }
                 else{

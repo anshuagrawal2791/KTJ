@@ -17,7 +17,9 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.parse.ParseUser;
 
 public class Wallet_Activity extends AppCompatActivity {
@@ -41,9 +43,14 @@ public class Wallet_Activity extends AppCompatActivity {
         user=ParseUser.getCurrentUser();
         kyc=user.getInt("kyc");
 
+        String name = user.getString("name");
+        String email = user.getString("email");
+        final IProfile profile = new ProfileDrawerItem().withName(name).withEmail(email).withIdentifier(100);
+
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.splash)
+                .withHeaderBackground(R.drawable.header)
+                .addProfiles(profile)
 
 
                 .withSavedInstance(savedInstanceState)
@@ -56,8 +63,8 @@ public class Wallet_Activity extends AppCompatActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false)
-                        //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
+                     new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(4).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -75,6 +82,9 @@ public class Wallet_Activity extends AppCompatActivity {
                                 intent = new Intent(Wallet_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
                                 intent = new Intent(Wallet_Activity.this, Wallet_Activity.class);
+                            }
+                            else if (drawerItem.getIdentifier() == 4) {
+                                intent = new Intent(Wallet_Activity.this, LoginActivity.class);
                             }
                             if (intent != null) {
                                 Wallet_Activity.this.startActivity(intent);
@@ -125,6 +135,7 @@ public class Wallet_Activity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        user=ParseUser.getCurrentUser();
         kyc=user.getInt("kyc");
         if(kyc!=0){
             viewPager = (ViewPager) findViewById(R.id.viewpager);
@@ -146,6 +157,66 @@ public class Wallet_Activity extends AppCompatActivity {
 
             snackbar.show();
         }
+
+        String name = user.getString("name");
+        String email = user.getString("email");
+        final IProfile profile = new ProfileDrawerItem().withName(name).withEmail(email).withIdentifier(100);
+
+        headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.header)
+                .addProfiles(profile)
+
+
+            //    .withSavedInstance(savedInstanceState)
+                .build();
+        result = new DrawerBuilder()
+                .withActivity(this)
+               // .withToolbar(toolbar)
+                .withHasStableIds(true)
+                .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(4).withSelectable(false)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        //check if the drawerItem is set.
+                        //there are different reasons for the drawerItem to be null
+                        //--> click on the header
+                        //--> click on the footer
+                        //those items don't contain a drawerItem
+
+                        if (drawerItem != null) {
+                            Intent intent = null;
+                            if (drawerItem.getIdentifier() == 1) {
+                                //   intent = new Intent(Home_Activity.this, CompactHeaderDrawerActivity.class);
+                            } else if (drawerItem.getIdentifier() == 2) {
+                                intent = new Intent(Wallet_Activity.this, LiveMarket_Activity.class);
+                            } else if (drawerItem.getIdentifier() == 3) {
+                                intent = new Intent(Wallet_Activity.this, Wallet_Activity.class);
+                            }
+                            else if (drawerItem.getIdentifier() == 4) {
+                                intent = new Intent(Wallet_Activity.this, LoginActivity.class);
+                            }
+                            if (intent != null) {
+                                Wallet_Activity.this.startActivity(intent);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            }
+                        }
+                        return false;
+                    }
+
+
+
+                })
+                //.withSavedInstance(savedInstanceState)
+                .withShowDrawerOnFirstLaunch(true)
+                .build();
 
     }
 }

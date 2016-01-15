@@ -7,6 +7,8 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -31,7 +33,10 @@ import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+import com.parse.ParseUser;
 
 
 import org.json.JSONArray;
@@ -84,12 +89,7 @@ public class LiveMarket_Activity extends AppCompatActivity {
 
                 Log.d("Ram", "Line 88");
 
-                try {
-                    Toast.makeText(LiveMarket_Activity.this, (response.getJSONObject(1)).toString(), Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    Log.d("Ram","Line 90");
-                    e.printStackTrace();
-                }
+
 
                 for (int i=0;i<response.length();i++){
 
@@ -268,11 +268,15 @@ public class LiveMarket_Activity extends AppCompatActivity {
 
 
 
+        ParseUser user = ParseUser.getCurrentUser();
+        String name = user.getString("name");
+        String email = user.getString("email");
+        final IProfile profile = new ProfileDrawerItem().withName(name).withEmail(email).withIdentifier(100);
 
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
-                .withHeaderBackground(R.drawable.splash)
-
+                .withHeaderBackground(R.drawable.header)
+.addProfiles(profile)
 
                 .withSavedInstance(savedInstanceState)
                 .build();
@@ -284,8 +288,8 @@ public class LiveMarket_Activity extends AppCompatActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false)
-                        //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
+                            new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(4).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -303,6 +307,9 @@ public class LiveMarket_Activity extends AppCompatActivity {
                                 intent = new Intent(LiveMarket_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
                                 intent = new Intent(LiveMarket_Activity.this, Wallet_Activity.class);
+                            }
+                            else if (drawerItem.getIdentifier() == 4) {
+                                intent = new Intent(LiveMarket_Activity.this, LoginActivity.class);
                             }
                             if (intent != null) {
                                 LiveMarket_Activity.this.startActivity(intent);
@@ -324,13 +331,81 @@ public class LiveMarket_Activity extends AppCompatActivity {
 
     }
 
+
+
  //   private void setupChart(LineChart chart, LineData data, int color) {
 
         // no description text
 
   //  }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+       ParseUser user=ParseUser.getCurrentUser();
 
+
+        String name = user.getString("name");
+        String email = user.getString("email");
+        final IProfile profile = new ProfileDrawerItem().withName(name).withEmail(email).withIdentifier(100);
+
+        headerResult = new AccountHeaderBuilder()
+                .withActivity(this)
+                .withHeaderBackground(R.drawable.header)
+                .addProfiles(profile)
+
+
+                        //    .withSavedInstance(savedInstanceState)
+                .build();
+        result = new DrawerBuilder()
+                .withActivity(this)
+                        // .withToolbar(toolbar)
+                .withHasStableIds(true)
+                .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
+                .addDrawerItems(
+                        new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(4).withSelectable(false)
+                )
+                .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
+                    public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
+                        //check if the drawerItem is set.
+                        //there are different reasons for the drawerItem to be null
+                        //--> click on the header
+                        //--> click on the footer
+                        //those items don't contain a drawerItem
+
+                        if (drawerItem != null) {
+                            Intent intent = null;
+                            if (drawerItem.getIdentifier() == 1) {
+                                //   intent = new Intent(Home_Activity.this, CompactHeaderDrawerActivity.class);
+                            } else if (drawerItem.getIdentifier() == 2) {
+                                intent = new Intent(LiveMarket_Activity.this, LiveMarket_Activity.class);
+                            } else if (drawerItem.getIdentifier() == 3) {
+                                intent = new Intent(LiveMarket_Activity.this, Wallet_Activity.class);
+                            }
+                            else if (drawerItem.getIdentifier() == 4) {
+                                intent = new Intent(LiveMarket_Activity.this, LoginActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                            }
+                            if (intent != null) {
+                                LiveMarket_Activity.this.startActivity(intent);
+                            }
+                        }
+                        return false;
+                    }
+
+
+
+                })
+                        //.withSavedInstance(savedInstanceState)
+                .withShowDrawerOnFirstLaunch(true)
+                .build();
+
+    }
 
 
 }

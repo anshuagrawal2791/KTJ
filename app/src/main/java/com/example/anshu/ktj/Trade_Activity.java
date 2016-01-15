@@ -42,9 +42,7 @@ public class Trade_Activity extends AppCompatActivity {
                         new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
                         new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Trade").withDescription("").withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Transaction").withDescription("").withIdentifier(5).withSelectable(false)
-                        //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
+                        new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(4).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
