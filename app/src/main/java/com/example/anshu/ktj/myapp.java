@@ -16,10 +16,10 @@ public class myapp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Parse.initialize(this);
+       // Parse.initialize(this);
         sInstance=this;
         Parse.enableLocalDatastore(this);
-       // Parse.initialize(this);
+        Parse.initialize(this);
 
 
     }

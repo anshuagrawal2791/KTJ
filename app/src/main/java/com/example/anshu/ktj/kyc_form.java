@@ -21,9 +21,9 @@ import com.parse.SaveCallback;
 
 public class kyc_form extends AppCompatActivity {
 
-    AutoCompleteTextView name;
-    EditText gender,dob,nationality,pan,bankname,bankac,mobile;
-    String gender_str,dob_str,nationality_str,pan_str,bankname_str,bankac_str,mobile_str;
+   // AutoCompleteTextView name;
+    EditText name,gender,dob,nationality,pan,bankname,bankac,mobile;
+    String name_str,gender_str,dob_str,nationality_str,pan_str,bankname_str,bankac_str,mobile_str;
     Button apply;
 
     @Override
@@ -33,7 +33,7 @@ public class kyc_form extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ParseUser user = ParseUser.getCurrentUser();
-       EditText  name = (EditText)findViewById(R.id.name);
+         name = (EditText)findViewById(R.id.name);
         name.setText(user.getString("name"));
         gender = (EditText)findViewById(R.id.gender);
         dob = (EditText)findViewById(R.id.dob);
@@ -51,6 +51,7 @@ public class kyc_form extends AppCompatActivity {
         apply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                name_str = name.getText().toString();
                 gender_str = gender.getText().toString();
                 dob_str = dob.getText().toString();
                 nationality_str = nationality.getText().toString();
@@ -78,6 +79,7 @@ public class kyc_form extends AppCompatActivity {
 
 
                     ParseUser user = ParseUser.getCurrentUser();
+                    user.put("name",name_str);
                     user.put("gender", gender_str);
                     user.put("dob", dob_str);
                     user.put("nationality", nationality_str);
@@ -85,11 +87,12 @@ public class kyc_form extends AppCompatActivity {
                     user.put("bank", bankname_str);
                     user.put("accno", bankac_str);
                     user.put("phone", mobile_str);
+                    user.put("kyc",1);
 
                     final ProgressDialog dialog = new ProgressDialog(kyc_form.this);
                     dialog.setIndeterminate(true);
                     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-                    dialog.setMessage("Signing Up..");
+                    dialog.setMessage("Submitting..");
                     dialog.setCanceledOnTouchOutside(false);
                     dialog.show();
 
