@@ -78,6 +78,7 @@ public class Wallet_Activity extends AppCompatActivity {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
                                 //   intent = new Intent(Home_Activity.this, CompactHeaderDrawerActivity.class);
+                                intent = new Intent(Wallet_Activity.this, Home_Activity.class);
                             } else if (drawerItem.getIdentifier() == 2) {
                                 intent = new Intent(Wallet_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
@@ -193,6 +194,7 @@ public class Wallet_Activity extends AppCompatActivity {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
                                 //   intent = new Intent(Home_Activity.this, CompactHeaderDrawerActivity.class);
+                                intent = new Intent(Wallet_Activity.this, Home_Activity.class);
                             } else if (drawerItem.getIdentifier() == 2) {
                                 intent = new Intent(Wallet_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
