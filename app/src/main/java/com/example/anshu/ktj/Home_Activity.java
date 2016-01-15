@@ -156,6 +156,11 @@ public class Home_Activity extends AppCompatActivity {
                             }
                             else if (drawerItem.getIdentifier() == 4) {
                                 intent = new Intent(Home_Activity.this, LoginActivity.class);
+                                intent = new Intent(Home_Activity.this, LoginActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             }
                             if (intent != null) {
                                 Home_Activity.this.startActivity(intent);
@@ -281,6 +286,7 @@ public class Home_Activity extends AppCompatActivity {
                                 intent = new Intent(Home_Activity.this, LoginActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                             }
                             if (intent != null) {
