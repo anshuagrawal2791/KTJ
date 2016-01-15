@@ -44,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static android.Manifest.permission.LOCATION_HARDWARE;
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
@@ -150,6 +151,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         }
                     });
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this,"Wrong password",Toast.LENGTH_LONG).show();
                 }
 
 

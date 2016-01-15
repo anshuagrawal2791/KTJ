@@ -28,6 +28,7 @@ dependencies {
     compile 'com.wang.avi:library:1.0.1'
     compile 'com.mcxiaoke.volley:library:1.0.19'
     compile 'com.github.PhilJay:MPAndroidChart:v2.1.6'
+    compile 'com.github.ganfra:material-spinner:1.1.1'
     compile('com.mikepenz:materialdrawer:4.6.4@aar') {
         transitive = true
     }

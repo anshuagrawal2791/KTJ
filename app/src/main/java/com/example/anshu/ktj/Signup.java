@@ -79,8 +79,8 @@ public class Signup extends AppCompatActivity {
                     user.setEmail(emailid);
                     user.put("name",username);
                     user.put("kyc",0);
-                    user.put("bitcoin",0.0);
-                    user.put("rupee",0.0);
+                    user.put("bitcoin",5.0);
+                    user.put("rupee",10000.0);
                     final ProgressDialog dialog= new ProgressDialog(Signup.this);
                     dialog.setIndeterminate(true);
                     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);

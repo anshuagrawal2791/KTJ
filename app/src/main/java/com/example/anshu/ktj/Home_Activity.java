@@ -2,13 +2,20 @@ package com.example.anshu.ktj;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.PersistableBundle;
+import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -25,12 +32,81 @@ public class Home_Activity extends AppCompatActivity {
     private Drawer result = null;
     private boolean opened = false;
 
+    VideoView videoView;
+    private MediaController mediaControls;
+    private int position = 0;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_);
+        if (mediaControls == null) {
+
+            mediaControls = new MediaController(Home_Activity.this);
+
+        }
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        videoView=(VideoView)findViewById(R.id.videoView2);
+        try {
+
+            //set the media controller in the VideoView
+
+            videoView.setMediaController(mediaControls);
+
+
+
+            //set the uri of the video to be played
+
+            videoView.setVideoURI(Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.bitcoinvideo));
+
+
+
+        } catch (Exception e) {
+
+            Log.e("Error", e.getMessage());
+
+            e.printStackTrace();
+
+        }
+        //videoView.requestFocus();
+
+        //we also set an setOnPreparedListener in order to know when the video file is ready for playback
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+
+
+            public void onPrepared(MediaPlayer mediaPlayer) {
+
+                // close the progress bar and play the video
+
+                //if we have a position on savedInstanceState, the video playback should start from here
+
+                videoView.seekTo(position);
+
+                if (position == 0) {
+
+                    videoView.start();
+
+                } else {
+
+                    //if we come from a resumed activity, video playback will be paused
+
+                    videoView.pause();
+
+                }
+
+            }
+
+
+        });
+
+
+
+
+
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
                 .withHeaderBackground(R.drawable.splash)
@@ -84,6 +160,29 @@ public class Home_Activity extends AppCompatActivity {
     }).withSavedInstance(savedInstanceState)
                     .withShowDrawerOnFirstLaunch(true)
                     .build();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(savedInstanceState, outPersistentState);
+        savedInstanceState.putInt("Position", videoView.getCurrentPosition());
+
+        videoView.pause();
+
+    }
+
+    @Override
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        super.onRestoreInstanceState(savedInstanceState);
+
+        //we use onRestoreInstanceState in order to play the video playback from the stored position
+
+        position = savedInstanceState.getInt("Position");
+
+        videoView.seekTo(position);
+
     }
 
 }

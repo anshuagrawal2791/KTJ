@@ -4,9 +4,22 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.parse.ParseUser;
+
+import fr.ganfra.materialspinner.MaterialSpinner;
 
 
 /**
@@ -60,11 +73,119 @@ public class Withdrawaltab extends Fragment {
         }
     }
 
+    public MaterialSpinner spinner;
+    TextView balance;
+    EditText amount;
+    EditText accno;
+    Button submit;
+    ParseUser user=ParseUser.getCurrentUser();
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_withdrawaltab, container, false);
+       View v= inflater.inflate(R.layout.fragment_withdrawaltab, container, false);
+
+
+        String[] ITEMS = {"BTC", "INR"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_spinner_item, ITEMS);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        balance=(TextView)v.findViewById(R.id.balance);
+        amount=(EditText)v.findViewById(R.id.withdrawalamount);
+        accno=(EditText)v.findViewById(R.id.accno);
+        submit=(Button)v.findViewById(R.id.submit);
+
+        balance.setVisibility(View.GONE);
+        accno.setVisibility(View.GONE);
+        amount.setVisibility(View.GONE);
+        submit.setVisibility(View.GONE);
+
+        spinner = (MaterialSpinner)v.findViewById(R.id.spinner);
+        spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0)
+                {
+                    balance.setVisibility(View.VISIBLE);
+                    accno.setVisibility(View.VISIBLE);
+                    accno.setHint("BTC Wallet Address");
+                    amount.setHint("Withdrawal BTC");
+                    amount.setVisibility(View.VISIBLE);
+                    submit.setVisibility(View.VISIBLE);
+                    balance.setText("BTC Balance: " + user.get("bitcoin"));
+
+
+
+                    submit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            final int amt=Integer.parseInt(amount.getText().toString());
+                            if(amt>Integer.parseInt(user.get("bitcoin").toString()))
+                            {
+                                amount.setError("Insufficient Balance");
+                            }
+                            else {
+                                Toast.makeText(getContext(), "done!", Toast.LENGTH_LONG).show();
+
+                                balance.setText("BTC Balance: "+(user.getInt("bitcoin")-amt));
+
+                                user.put("bitcoin", user.getInt("bitcoin") - amt);
+
+                                // balance.setText(user.getInt("bitcoin") - amt);
+                                user.saveInBackground();
+                            }
+                        }
+                    });
+
+
+                }
+if(position==1)
+                {
+                    balance.setVisibility(View.VISIBLE);
+                    accno.setVisibility(View.VISIBLE);
+                    accno.setHint("Bank ACC/No");
+                    amount.setVisibility(View.VISIBLE);
+                    amount.setHint("Withdrawal INR");
+                    submit.setVisibility(View.VISIBLE);
+                    balance.setText("INR Balance: " + user.get("rupee"));
+                    accno.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+
+                    submit.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            final int amt=Integer.parseInt(amount.getText().toString());
+                            if(amt>Integer.parseInt(user.get("rupee").toString()))
+                            {
+                                amount.setError("Insufficient Balance");
+                            }
+                            else {
+                                Toast.makeText(getContext(), "done!", Toast.LENGTH_LONG).show();
+
+
+                                balance.setText("INR Balance: " + (user.getInt("rupee") - amt));
+                                user.put("rupee", user.getInt("rupee") - amt);
+                                user.saveInBackground();
+                            }
+                        }
+                    });
+
+
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.RelativeLayout;
 
 import com.parse.Parse;
@@ -20,6 +22,7 @@ public class Splash extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         //Parse.initialize(this);
+
         setContentView(R.layout.splash);
 
         findViewById(R.id.loading).setVisibility(View.VISIBLE);

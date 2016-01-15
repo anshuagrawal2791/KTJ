@@ -1,100 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+<FrameLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-
-
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="#3d5afe">
-    <LinearLayout
-        android:orientation="vertical"
-        xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="20dp"
+    android:background="#00a2f8"
+    android:elevation="5dp"
+    android:layout_marginTop="60dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp">
+    <TextView
         android:layout_width="match_parent"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
-        android:id="@+id/container"
+        android:text="Welcome to BTCXIndia, India&apos;s leading Bitcoin Exchange. India's leading platform to trade Bitcoin and INR in real time with express deposits and withdrawals."
+        android:id="@+id/tv"
+        android:textSize="20dp"
+        android:textColor="#ffffff" />
+</FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="92dp">
 
-        android:background="#4858ed">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="About Bitcoin"
+            android:id="@+id/textView33"
+            android:layout_gravity="center_horizontal|bottom"
+            android:layout_margin="10dp"
+            android:background="#00a2f8"
+            android:padding="5dp"
+            android:textColor="#ffffff"
+            android:elevation="5dp"/>
 
-        <LinearLayout
-            android:orientation="vertical"
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/bitcoin"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_margin="5dp" />
+    </FrameLayout>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <TextView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#3d5afe"
-                android:layout_gravity="bottom"
-                android:layout_marginTop="80dp"
-                android:padding="2dp">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Welcome to BTCXIndia, India's leading Bitcoin Exchange.
-    Sign up now to trade Bitcoin and INR in real time with express deposits and withdrawals.
-    "
-                    android:id="@+id/textView2"
-                    android:lineSpacingExtra = "3dp"
-                    android:textColor="#fbf9f9"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="0dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:backgroundTint="#2848ec"
-                android:paddingTop="10dp"
-                android:paddingBottom="5dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="About Bitcoin"
-                    android:id="@+id/textView3"
-                    android:textSize="20sp"
-                    android:textColor="#fffdfd" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:background="#3b35da"
-                android:padding="2dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:text="Bitcoin is an experimental, decentralized digital currency that enables instant payments to anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate with no central authority: managing transactions and issuing money are carried out collectively by the network."
-                    android:id="@+id/textView4"
-                    android:lineSpacingExtra = "3dp"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp" />
-            </LinearLayout>
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:layout_gravity="center_horizontal"
+            android:text="Bitcoin is an experimental, decentralized digital currency that enables instant payments to anyone, anywhere in the world. Bitcoin uses peer-to-peer technology to operate with no central authority: managing transactions and issuing money are carried out collectively by the network.  " />
+    </FrameLayout>
 
 
 
-            <VideoView
-                android:layout_width="match_parent"
-                android:layout_height="500dp"
-                android:id="@+id/videoView"
-                android:clickable="false"
-                android:background="#fffefe" />
-        </LinearLayout>
-
-
-
-    </LinearLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <VideoView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:id="@+id/videoView2"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp" />
+    </FrameLayout>
+</LinearLayout>
 </ScrollView>

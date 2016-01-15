@@ -6,8 +6,13 @@
     android:layout_marginTop="20dp">
 
     <!-- TODO: Update blank fragment layout -->
-
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +20,8 @@
         android:text="Cash Deposit"
         android:id="@+id/textView18"
         android:layout_gravity="left|top"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp" />
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -80,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="S Capital Solutions Private Ltd."
+            android:text="ABC Private Ltd."
             android:id="@+id/textView25"
             android:layout_gravity="right|top" />
 
@@ -134,9 +140,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="60dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -150,9 +156,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Wallet Address: BDFKDADL121343BVAFOV"
+            android:text="Wallet Address: 121343BVAFOV"
             android:id="@+id/textView32"
             android:layout_gravity="left|bottom"
             android:layout_marginTop="40dp" />
     </FrameLayout>
+</LinearLayout>
+</ScrollView>
 </FrameLayout>

@@ -18,6 +18,7 @@ import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
+import com.parse.ParseUser;
 
 public class Wallet_Activity extends AppCompatActivity {
     private AccountHeader headerResult = null;
@@ -26,6 +27,7 @@ public class Wallet_Activity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
     int kyc;
+    ParseUser user;
     LinearLayout wallet;
 
 
@@ -35,6 +37,9 @@ public class Wallet_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_wallet_);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        user=ParseUser.getCurrentUser();
+        kyc=user.getInt("kyc");
 
         headerResult = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -125,6 +130,7 @@ public class Wallet_Activity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        kyc=user.getInt("kyc");
         if(kyc!=0){
             viewPager = (ViewPager) findViewById(R.id.viewpager);
             setupViewPager(viewPager);

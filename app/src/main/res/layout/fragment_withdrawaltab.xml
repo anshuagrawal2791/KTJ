@@ -1,10 +1,78 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.anshu.ktj.Withdrawaltab"
-    >
+    android:orientation="vertical">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+    <fr.ganfra.materialspinner.MaterialSpinner
 
-    <!-- TODO: Update blank fragment layout -->
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:ms_multiline="false"
+        app:ms_hint="Select Type"
+        app:ms_enableFloatingLabel="true"
+        app:ms_enableErrorLabel="true"
+        app:ms_floatingLabelText="Type"
+        app:ms_baseColor="@color/colorAccent"
+        app:ms_highlightColor="@color/colorAccent"
+        app:ms_errorColor="@color/error"
 
-</FrameLayout>
+        app:ms_thickness="1dp"
+        app:ms_hintColor="@color/hint"
+        app:ms_arrowColor="@color/base"
+        app:ms_arrowSize="8dp"
+        app:ms_alignLabels="false"
+        app:ms_floatingLabelColor="@color/colorAccent"
+        android:layout_margin="20dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:id="@+id/balance" />
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/withdrawalamount"
+            android:layout_width="match_parent"
+            android:inputType="numberDecimal"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+ <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+     android:layout_margin="20dp">
+
+        <EditText
+            android:id="@+id/accno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/submit"
+        android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>
