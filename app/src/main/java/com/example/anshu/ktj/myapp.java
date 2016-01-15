@@ -16,6 +16,10 @@ public class myapp extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance=this;
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this);
+
+
     }
 
     public static myapp getsInstance(){

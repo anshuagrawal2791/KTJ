@@ -120,11 +120,11 @@ public class LiveMarket_Activity extends AppCompatActivity {
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Trade").withDescription("").withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Transaction").withDescription("").withIdentifier(5).withSelectable(false)
+                        new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(true),
+                        new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(true),
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(true),
+                        new PrimaryDrawerItem().withName("Trade").withDescription("").withIdentifier(4).withSelectable(true),
+                        new PrimaryDrawerItem().withName("Transaction").withDescription("").withIdentifier(5).withSelectable(true)
                         //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
