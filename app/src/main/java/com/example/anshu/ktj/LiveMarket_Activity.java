@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -281,11 +282,9 @@ public class LiveMarket_Activity extends AppCompatActivity {
                 .withHasStableIds(true)
                 .withAccountHeader(headerResult) //set the AccountHeader we created earlier for the header
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(true),
-                        new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(true),
-                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(true),
-                        new PrimaryDrawerItem().withName("Trade").withDescription("").withIdentifier(4).withSelectable(true),
-                        new PrimaryDrawerItem().withName("Transaction").withDescription("").withIdentifier(5).withSelectable(true)
+                        new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false)
                         //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -299,15 +298,11 @@ public class LiveMarket_Activity extends AppCompatActivity {
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(LiveMarket_Activity.this, Home_Activity.class);
+                                //   intent = new Intent(Home_Activity.this, CompactHeaderDrawerActivity.class);
                             } else if (drawerItem.getIdentifier() == 2) {
                                 intent = new Intent(LiveMarket_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
                                 intent = new Intent(LiveMarket_Activity.this, Wallet_Activity.class);
-                            } else if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(LiveMarket_Activity.this, Trade_Activity.class);
-                            } else if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(LiveMarket_Activity.this, Trans_Activity.class);
                             }
                             if (intent != null) {
                                 LiveMarket_Activity.this.startActivity(intent);
@@ -315,6 +310,7 @@ public class LiveMarket_Activity extends AppCompatActivity {
                         }
                         return false;
                     }
+
 
 
                 }).withSavedInstance(savedInstanceState)

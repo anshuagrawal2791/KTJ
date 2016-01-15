@@ -56,27 +56,27 @@
         </activity>
         <activity
             android:name=".kyc_form"
-            android:label="@string/title_activity_kyc_form"
+            android:label="KYC FORM"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Home_Activity"
-            android:label="@string/title_activity_home_"
+            android:label="KTJ"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Wallet_Activity"
-            android:label="@string/title_activity_wallet_"
+            android:label="KTJ"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trade_Activity"
-            android:label="@string/title_activity_trade_"
+            android:label="KTJ"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".LiveMarket_Activity"
-            android:label="@string/title_activity_live_market_"
+            android:label="KTJ"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Trans_Activity"
-            android:label="@string/title_activity_trans_"
+            android:label="KTJ"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

@@ -130,9 +130,7 @@ public class Home_Activity extends AppCompatActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Trade").withDescription("").withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Transaction").withDescription("").withIdentifier(5).withSelectable(false)
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false)
                   //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
                         )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -151,10 +149,6 @@ public class Home_Activity extends AppCompatActivity {
                                 intent = new Intent(Home_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
                                 intent = new Intent(Home_Activity.this, Wallet_Activity.class);
-                            } else if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(Home_Activity.this, Trade_Activity.class);
-                            } else if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(Home_Activity.this, Trans_Activity.class);
                             }
                             if (intent != null) {
                                 Home_Activity.this.startActivity(intent);
@@ -184,7 +178,7 @@ public class Home_Activity extends AppCompatActivity {
                 Log.d("Ram", "Line 88");
 
                 try {
-                    Toast.makeText(Home_Activity.this, (response.getJSONObject(1)).toString(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(Home_Activity.this, (response.getJSONObject(1)).toString(), Toast.LENGTH_LONG).show();
                     TextView last_tr = (TextView) findViewById(R.id.last_tr);
                     last_tr.setText("Last Traded Price: "+response.getJSONObject(0).getString("price"));
                 } catch (JSONException e) {

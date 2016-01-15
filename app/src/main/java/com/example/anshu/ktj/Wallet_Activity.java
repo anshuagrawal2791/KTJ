@@ -56,9 +56,7 @@ public class Wallet_Activity extends AppCompatActivity {
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Home").withDescription("").withIdentifier(1).withSelectable(false),
                         new PrimaryDrawerItem().withName("Live Market").withDescription("").withIdentifier(2).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Trade").withDescription("").withIdentifier(4).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Transaction").withDescription("").withIdentifier(5).withSelectable(false)
+                        new PrimaryDrawerItem().withName("Wallet").withDescription("").withIdentifier(3).withSelectable(false)
                         //      new PrimaryDrawerItem().withName("Log Out").withDescription("").withIdentifier(6).withSelectable(false)
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
@@ -72,15 +70,11 @@ public class Wallet_Activity extends AppCompatActivity {
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 1) {
-                                intent = new Intent(Wallet_Activity.this, Home_Activity.class);
+                                //   intent = new Intent(Home_Activity.this, CompactHeaderDrawerActivity.class);
                             } else if (drawerItem.getIdentifier() == 2) {
                                 intent = new Intent(Wallet_Activity.this, LiveMarket_Activity.class);
                             } else if (drawerItem.getIdentifier() == 3) {
                                 intent = new Intent(Wallet_Activity.this, Wallet_Activity.class);
-                            } else if (drawerItem.getIdentifier() == 4) {
-                                intent = new Intent(Wallet_Activity.this, Trade_Activity.class);
-                            } else if (drawerItem.getIdentifier() == 5) {
-                                intent = new Intent(Wallet_Activity.this, Trans_Activity.class);
                             }
                             if (intent != null) {
                                 Wallet_Activity.this.startActivity(intent);
@@ -88,6 +82,7 @@ public class Wallet_Activity extends AppCompatActivity {
                         }
                         return false;
                     }
+
 
 
                 }).withSavedInstance(savedInstanceState)
