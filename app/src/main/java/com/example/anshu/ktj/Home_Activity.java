@@ -15,8 +15,13 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.MediaController;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -27,6 +32,9 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
 public class Home_Activity extends AppCompatActivity {
     private AccountHeader headerResult = null;
     private Drawer result = null;
@@ -36,7 +44,7 @@ public class Home_Activity extends AppCompatActivity {
     private MediaController mediaControls;
     private int position = 0;
 
-
+    private VolleySingleton volleySingleton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -160,7 +168,45 @@ public class Home_Activity extends AppCompatActivity {
     }).withSavedInstance(savedInstanceState)
                     .withShowDrawerOnFirstLaunch(true)
                     .build();
+
+
+
+        volleySingleton = VolleySingleton.getInstance();
+
+        String url = "http://api.btcxindia.com/trades";
+        //occupancy_chart = (LineChart)findViewById(R.id.graph);
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+
+                Log.d("Ram", "Line 88");
+
+                try {
+                    Toast.makeText(Home_Activity.this, (response.getJSONObject(1)).toString(), Toast.LENGTH_LONG).show();
+                    TextView last_tr = (TextView) findViewById(R.id.last_tr);
+                    last_tr.setText(response.getJSONObject(0).getString("price"));
+                } catch (JSONException e) {
+                    Log.d("Ram","Line 90");
+                    e.printStackTrace();
+                }
+
+
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+
+            public void onErrorResponse(VolleyError error) {
+                Log.d("Ram","Line 122");
+            }
+        });
+
+        volleySingleton.getmRequestQueue().add(jsonArrayRequest);
     }
+
+    
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState, PersistableBundle outPersistentState) {

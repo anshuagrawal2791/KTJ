@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:text="About Bitcoin"
-            android:id="@+id/textView33"
+            android:id="@+id/last_tr"
             android:layout_gravity="center_horizontal|bottom"
             android:layout_margin="10dp"
             android:background="#00a2f8"
@@ -80,5 +80,12 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp" />
     </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/textView34" />
 </LinearLayout>
 </ScrollView>
