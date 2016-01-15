@@ -7,6 +7,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.parse.ParseUser;
+
+import org.w3c.dom.Text;
+
+import java.util.Random;
 
 
 /**
@@ -60,11 +67,42 @@ public class Wallettab extends Fragment {
         }
     }
 
+    TextView name;
+    TextView phone;
+    TextView bankdetails;
+    TextView customerid;
+    TextView bitcoin;
+    TextView rupee;
+    ParseUser user;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wallettab, container, false);
+        View v= inflater.inflate(R.layout.fragment_wallettab, container, false);
+
+        user=ParseUser.getCurrentUser();
+        name=(TextView)v.findViewById(R.id.textView11);
+        phone=(TextView)v.findViewById(R.id.textView12);
+        bankdetails=(TextView)v.findViewById(R.id.textView13);
+        customerid=(TextView)v.findViewById(R.id.textView14);
+        bitcoin=(TextView)v.findViewById(R.id.textView16);
+        rupee=(TextView)v.findViewById(R.id.textView17);
+
+
+        name.setText(user.getString("name"));
+        phone.setText(user.getString("phone"));
+        bankdetails.setText(user.getString("bank")+user.getString("accno"));
+
+        Random rand = new Random();
+        int n= (100000 + rand.nextInt(900000));
+        customerid.setText("BTCX"+n);
+        bitcoin.setText(user.get("bitcoin")+"");
+        rupee.setText(user.get("rupee")+"");
+
+
+        return v;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

@@ -19,7 +19,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        Parse.initialize(this);
+        //Parse.initialize(this);
         setContentView(R.layout.splash);
 
         findViewById(R.id.loading).setVisibility(View.VISIBLE);

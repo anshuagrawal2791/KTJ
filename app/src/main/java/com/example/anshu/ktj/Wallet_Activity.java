@@ -4,9 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
@@ -19,6 +23,11 @@ public class Wallet_Activity extends AppCompatActivity {
     private AccountHeader headerResult = null;
     private Drawer result = null;
     private boolean opened = false;
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
+    int kyc;
+    LinearLayout wallet;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,10 +85,66 @@ public class Wallet_Activity extends AppCompatActivity {
                     }
 
 
-
                 }).withSavedInstance(savedInstanceState)
                 .withShowDrawerOnFirstLaunch(true)
                 .build();
+
+        wallet=(LinearLayout)findViewById(R.id.walletlayout);
+
+        if(kyc!=0){
+        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);}
+        else
+        {
+            //Snackbar.make(wallet,"Fill KYC form",Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar snackbar = Snackbar
+                    .make(wallet, "First Fill KYC form", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("FORM", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(Wallet_Activity.this,kyc_form.class));
+                        }
+                    });
+
+            snackbar.show();
+        }
+
+
+    }
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new Wallettab(), "Wallet");
+        adapter.addFragment(new Withdrawaltab(), "Withdrawal");
+        adapter.addFragment(new Deposittab(), "Deposit");
+        viewPager.setAdapter(adapter);
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(kyc!=0){
+            viewPager = (ViewPager) findViewById(R.id.viewpager);
+            setupViewPager(viewPager);
+
+            tabLayout = (TabLayout) findViewById(R.id.tabs);
+            tabLayout.setupWithViewPager(viewPager);}
+        else
+        {
+            //Snackbar.make(wallet,"Fill KYC form",Snackbar.LENGTH_INDEFINITE).show();
+            Snackbar snackbar = Snackbar
+                    .make(wallet, "First Fill KYC form", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("FORM", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(Wallet_Activity.this,kyc_form.class));
+                        }
+                    });
+
+            snackbar.show();
+        }
+
+    }
 }

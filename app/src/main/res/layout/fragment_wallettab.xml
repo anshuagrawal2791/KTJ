@@ -3,14 +3,156 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.anshu.ktj.Wallettab"
-    android:background="#121212">
+    >
 
     <!-- TODO: Update blank fragment layout -->
+
+
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Account approved for trading"
+        android:id="@+id/textView5"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#686666" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="ACCOUNT OVERVIEW"
+        android:id="@+id/textView6"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="50dp"
+        />
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment"
-        android:textColor="#ffffff"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Name"
+            android:id="@+id/textView7"
+            android:layout_gravity="left|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Phone"
+            android:id="@+id/textView8"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Bank Details"
+            android:id="@+id/textView9"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="80dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Customer ID"
+            android:id="@+id/textView10"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="120dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView11"
+            android:layout_gravity="right|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView12"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView13"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="80dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/textView14"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="120dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="AVAILABLE FOR TRADING"
+            android:id="@+id/textView15"
+            android:layout_gravity="center" />
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="320dp">
+
+        <ImageView
+            android:layout_width="69dp"
+            android:layout_height="69dp"
+            android:id="@+id/imageView2"
+            android:layout_gravity="left|top"
+            android:src="@drawable/bitcoin"
+            android:layout_marginLeft="20dp" />
+
+        <ImageView
+            android:layout_width="81dp"
+            android:layout_height="81dp"
+            android:id="@+id/imageView3"
+            android:layout_gravity="right|top"
+            android:src="@drawable/rupee"
+            android:layout_marginRight="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView16"
+            android:layout_gravity="left|bottom"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/textView17"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp" />
+    </FrameLayout>
 </FrameLayout>

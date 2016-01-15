@@ -2,12 +2,157 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.anshu.ktj.Deposittab">
+    tools:context="com.example.anshu.ktj.Deposittab"
+    android:layout_marginTop="20dp">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Cash Deposit"
+        android:id="@+id/textView18"
+        android:layout_gravity="left|top"
+        android:layout_marginLeft="10dp" />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="A/C Name"
+            android:id="@+id/textView19"
+            android:layout_gravity="left|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="A/C Number"
+            android:id="@+id/textView20"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="A/C Type"
+            android:id="@+id/textView22"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="80dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bank Name"
+            android:id="@+id/textView21"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="120dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Bank Branch"
+            android:id="@+id/textView24"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="160dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="IFSC Code"
+            android:id="@+id/textView23"
+            android:layout_gravity="left|top"
+            android:layout_marginTop="200dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="S Capital Solutions Private Ltd."
+            android:id="@+id/textView25"
+            android:layout_gravity="right|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="123456789"
+            android:id="@+id/textView26"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="40dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Current Account"
+            android:id="@+id/textView27"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="80dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Andhra Bank"
+            android:id="@+id/textView28"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="120dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="kothaguda, Hyderabad"
+            android:id="@+id/textView29"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="160dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="ANDB000369"
+            android:id="@+id/textView30"
+            android:layout_gravity="right|top"
+            android:layout_marginTop="200dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="BTC Deposit"
+            android:id="@+id/textView31"
+            android:layout_gravity="left|top" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Wallet Address: BDFKDADL121343BVAFOV"
+            android:id="@+id/textView32"
+            android:layout_gravity="left|bottom"
+            android:layout_marginTop="40dp" />
+    </FrameLayout>
 </FrameLayout>

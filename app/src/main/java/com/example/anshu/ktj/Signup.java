@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseClassName;
@@ -24,6 +25,7 @@ public class Signup extends AppCompatActivity {
     EditText user, city, email, phone;
     String username, password, emailid, phoneno;
 
+    TextView alreadyregistered;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,13 @@ public class Signup extends AppCompatActivity {
         getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
 
         sub=(Button)findViewById(R.id.submit);
+       // alreadyregistered=(TextView)findViewById(R.id.alreadyregisterd);
+//        alreadyregistered.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(Signup.this,LoginActivity.class));
+//            }
+//        });
 
         sub.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +78,9 @@ public class Signup extends AppCompatActivity {
                     user.put("phone", phoneno);
                     user.setEmail(emailid);
                     user.put("name",username);
+                    user.put("kyc",0);
+                    user.put("bitcoin",0.0);
+                    user.put("rupee",0.0);
                     final ProgressDialog dialog= new ProgressDialog(Signup.this);
                     dialog.setIndeterminate(true);
                     dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
