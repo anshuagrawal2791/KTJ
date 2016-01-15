@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="#f0eeee">
 
 
     <TableLayout
@@ -53,7 +54,8 @@
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#a3b8c9" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -61,7 +63,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/price1"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#a3b8c9" />
 
         </TableRow>
 
@@ -79,7 +82,8 @@
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#b4b2b2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -87,7 +91,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/price2"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#b4b2b2" />
 
         </TableRow>
 
@@ -105,7 +110,8 @@
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#a3b8c9" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -113,7 +119,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/price3"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#a3b8c9" />
 
         </TableRow>
 
@@ -131,7 +138,8 @@
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#b4b2b2" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -139,7 +147,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/price4"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#b4b2b2" />
 
         </TableRow>
 
@@ -157,7 +166,8 @@
                 android:layout_column="1"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#a3b8c9" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,7 +175,8 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Large Text"
                 android:id="@+id/price5"
-                android:textSize="15dp" />
+                android:textSize="15dp"
+                android:background="#a3b8c9" />
         </TableRow>
 
     </TableLayout>

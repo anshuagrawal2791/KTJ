@@ -186,7 +186,7 @@ public class Home_Activity extends AppCompatActivity {
                 try {
                     Toast.makeText(Home_Activity.this, (response.getJSONObject(1)).toString(), Toast.LENGTH_LONG).show();
                     TextView last_tr = (TextView) findViewById(R.id.last_tr);
-                    last_tr.setText(response.getJSONObject(0).getString("price"));
+                    last_tr.setText("Last Traded Price: "+response.getJSONObject(0).getString("price"));
                 } catch (JSONException e) {
                     Log.d("Ram","Line 90");
                     e.printStackTrace();
