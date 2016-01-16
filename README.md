@@ -55,7 +55,7 @@ Contributors
  -  Utsav Agarwal 
 
  <a href="https://www.facebook.com/uagarwal744" target="_blank" title="facebook profile" style="width:100%"><img src="https://github.com/PhilJay/MPAndroidChart/blob/master/design/facebook_icon.png" title="Share on Facebook" width="35" height=35 />
-  
+     Uagarwal744@gmail.com
     +91-7076607519
 
     
